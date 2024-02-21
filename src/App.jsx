@@ -8,12 +8,12 @@ import { createContext, useEffect, useState } from "react";
 export const UserContext = createContext();
 
 function App() {
-  const [user, setUser] = useState();
+  const [userPortfolio, setUserPortfolio] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}api/portfolio/position`,
+        `${import.meta.env.VITE_API_URL}/api/portfolio/position`,
         {
           method: "GET",
           mode: "cors",
@@ -23,8 +23,11 @@ function App() {
           },
         }
       );
-      const json = await res.json();
-      console.log(json);
+
+      if (res.status === 200) {
+        const userData = await res.json();
+        setUserPortfolio(userData);
+      }
     };
     fetchData();
   }, []);
@@ -33,8 +36,8 @@ function App() {
     <>
       <UserContext.Provider
         value={{
-          user,
-          setUser,
+          userPortfolio,
+          setUserPortfolio,
         }}
       >
         <BrowserRouter>

@@ -11,7 +11,7 @@ const Login = () => {
     const password = form.elements["password"].value;
 
     const res = await fetch(
-      `${import.meta.env.VITE_API_URL}api/auth/local/login`,
+      `${import.meta.env.VITE_API_URL}/api/auth/local/login`,
       {
         method: "post",
         mode: "cors",

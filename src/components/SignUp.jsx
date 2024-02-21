@@ -12,7 +12,7 @@ const SignUp = () => {
     const confirmPassword = form.elements["confirmPassword"].value;
 
     const res = await fetch(
-      `${import.meta.env.VITE_API_URL}api/auth/local/signup`,
+      `${import.meta.env.VITE_API_URL}/api/auth/local/signup`,
       {
         method: "post",
         mode: "cors",

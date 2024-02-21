@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { UserContext } from "../App";
 
 const Positions = () => {
-  const { positions } = useContext(UserContext);
-  console.log(positions);
+  const { userPortfolio } = useContext(UserContext);
+  console.log(userPortfolio);
 };
 export default Positions;
