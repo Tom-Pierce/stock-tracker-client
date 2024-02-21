@@ -1,0 +1,14 @@
+.authenticationForm {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.textInput {
+  padding: 0.5rem;
+  background-color: var(--primary);
+  border: 2px solid var(--secondary);
+  color: var(--text);
+  margin: 1rem 0;
+  width: 100%;
+}
