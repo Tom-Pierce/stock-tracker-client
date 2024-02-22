@@ -9,46 +9,24 @@ const Positions = () => {
     <>
       {userPortfolio ? (
         <div className={styles.positionsTable}>
-          <ul>
-            <li className={styles.row}>
-              <div className={styles.cell}>
-                <p>ticker</p>
-              </div>
-              <div className={styles.cell}>
-                <p>value</p>
-              </div>
-              <div className={styles.cell}>
-                <p>current price</p>
-              </div>
-              <div className={styles.cell}>
-                <p>total cost</p>
-              </div>
-              <div className={styles.cell}>
-                <p>diff</p>
-              </div>
-            </li>
-            {userPortfolio.positions.map((position) => {
-              return (
-                <li key={`${position.ticker}-row`} className={styles.row}>
-                  <div className={styles.cell}>
-                    <p>{position.ticker}</p>
-                  </div>
-                  <div className={styles.cell}>
-                    <p>{position.value}</p>
-                  </div>
-                  <div className={styles.cell}>
-                    <p>{position.currentPrice}</p>
-                  </div>
-                  <div className={styles.cell}>
-                    <p>{position.cost}</p>
-                  </div>
-                  <div className={styles.cell}>
-                    <p>{position.value - position.cost}</p>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
+          <div className={styles.cell}>stock</div>
+          <div className={styles.cell}>current price</div>
+          <div className={styles.cell}>value</div>
+          <div className={styles.cell}>cost</div>
+          <div className={styles.cell}>profit</div>
+          {userPortfolio.positions.map((position) => {
+            return (
+              <>
+                <div className={styles.cell}>{position.ticker}</div>
+                <div className={styles.cell}>{position.currentPrice}</div>
+                <div className={styles.cell}>{position.value}</div>
+                <div className={styles.cell}>{position.cost}</div>
+                <div className={styles.cell}>
+                  {Math.round(((position.value - position.cost) * 100) / 100)}
+                </div>
+              </>
+            );
+          })}
         </div>
       ) : null}
     </>
