@@ -1,12 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../App";
 import styles from "../css/Positions.module.css";
-import menuSVG from "../assets/vertical-menu.svg";
 import React from "react";
+import expandMore from "../assets/expandMore.svg";
+import expandLess from "../assets/expandLess.svg";
 
 const Positions = () => {
   const { userPortfolio } = useContext(UserContext);
-  console.log(userPortfolio);
+  const [expandedRow, setExpandedRow] = useState(undefined);
+
+  const expandRowClickHandler = (e, index) => {
+    e.preventDefault();
+    if (index === expandedRow) setExpandedRow(undefined);
+    else setExpandedRow(index);
+  };
+
   return (
     <>
       {userPortfolio ? (
@@ -21,21 +29,66 @@ const Positions = () => {
           {userPortfolio.positions.map((position, index) => {
             return (
               <React.Fragment key={index}>
-                <div className={styles.cell}>{position.ticker}</div>
-                <div className={styles.cell}>{position.currentPrice}</div>
-                <div className={styles.cell}>{position.quantity}</div>
-                <div className={styles.cell}>{position.value}</div>
-                <div className={styles.cell}>{position.cost}</div>
-                <div className={styles.cell}>
-                  {Math.round(((position.value - position.cost) * 100) / 100)}
+                <div
+                  className={`${styles.cell} ${
+                    expandedRow === index ? styles.expanded : null
+                  }`}
+                >
+                  <p className={styles.top}>{position.ticker}</p>
                 </div>
-                <div className={styles.cell}>
+                <div
+                  className={`${styles.cell} ${
+                    expandedRow === index ? styles.expanded : null
+                  }`}
+                >
+                  <p className={styles.top}>{position.currentPrice}</p>
+                </div>
+                <div
+                  className={`${styles.cell} ${
+                    expandedRow === index ? styles.expanded : null
+                  }`}
+                >
+                  <p className={styles.top}>{position.quantity}</p>
+                </div>
+                <div
+                  className={`${styles.cell} ${
+                    expandedRow === index ? styles.expanded : null
+                  }`}
+                >
+                  <p className={styles.top}>{position.value}</p>
+                </div>
+                <div
+                  className={`${styles.cell} ${
+                    expandedRow === index ? styles.expanded : null
+                  }`}
+                >
+                  <p className={styles.top}>{position.cost}</p>
+                </div>
+                <div
+                  className={`${styles.cell} ${
+                    expandedRow === index ? styles.expanded : null
+                  }`}
+                >
+                  <p className={styles.top}>
+                    {Math.round(((position.value - position.cost) * 100) / 100)}
+                  </p>
+                </div>
+                <div
+                  className={`${styles.cell} ${
+                    expandedRow === index ? styles.expanded : null
+                  }`}
+                >
                   <button
                     type="button"
-                    className={styles.menuButton}
-                    onClick={() => {}}
+                    className={`${styles.menuButton} ${styles.top}`}
+                    onClick={(e) => {
+                      expandRowClickHandler(e, index);
+                    }}
                   >
-                    <img src={menuSVG} alt="menu" />
+                    <img
+                      src={expandedRow === index ? expandLess : expandMore}
+                      alt="menu"
+                    />
                   </button>
                 </div>
               </React.Fragment>
