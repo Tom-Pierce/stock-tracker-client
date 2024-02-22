@@ -1,6 +1,6 @@
 .positionsTable {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr) 0.25fr;
   max-width: min(700px, 90%);
   margin: 1rem;
   border: 1px solid var(--primary);
@@ -9,4 +9,15 @@
 .cell {
   text-align: center;
   border: 1px solid var(--primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menuButton {
+  background-color: var(--background);
+}
+
+.menuButton:hover {
+  cursor: pointer;
 }
