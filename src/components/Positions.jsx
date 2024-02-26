@@ -3,10 +3,12 @@ import { UserContext } from "../App";
 import styles from "../css/Positions.module.css";
 import expandMore from "../assets/expandMore.svg";
 import expandLess from "../assets/expandLess.svg";
+import NewLotForm from "./NewLotForm";
 
 const Positions = () => {
   const { userPortfolio } = useContext(UserContext);
-  const [expandedRow, setExpandedRow] = useState(undefined);
+  const [expandedRow, setExpandedRow] = useState(1);
+  const [errorMsgs, setErrorMsgs] = useState([]);
 
   const expandRowClickHandler = (e, index) => {
     e.preventDefault();
@@ -69,9 +71,22 @@ const Positions = () => {
                     />
                   </button>
                 </div>
+                {expandedRow === index ? (
+                  <div className={`${styles.cell} ${styles.formWrapper}`}>
+                    <NewLotForm
+                      ticker={position.ticker}
+                      setErrorMsgs={setErrorMsgs}
+                    />
+                  </div>
+                ) : null}
               </div>
             );
           })}
+          {errorMsgs.length > 0
+            ? errorMsgs.map((err, index) => {
+                return <div key={`error-${index}`}>{err}</div>;
+              })
+            : null}
         </div>
       ) : null}
     </>
