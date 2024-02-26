@@ -27,7 +27,7 @@
 }
 
 .row.expanded {
-  height: 4.5rem;
+  height: 5rem;
 }
 
 .menuButton {
@@ -44,5 +44,9 @@
 }
 
 .formWrapper {
+  display: flex;
+  gap: 1rem;
   grid-column: 1 / span 7;
+  border-top: 1px solid var(--primary);
+  border-bottom: 1px solid var(--primary);
 }

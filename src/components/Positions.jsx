@@ -4,6 +4,7 @@ import styles from "../css/Positions.module.css";
 import expandMore from "../assets/expandMore.svg";
 import expandLess from "../assets/expandLess.svg";
 import NewLotForm from "./NewLotForm";
+import SellLotForm from "./SellLotForm";
 
 const Positions = () => {
   const { userPortfolio } = useContext(UserContext);
@@ -74,6 +75,10 @@ const Positions = () => {
                 {expandedRow === index ? (
                   <div className={`${styles.cell} ${styles.formWrapper}`}>
                     <NewLotForm
+                      ticker={position.ticker}
+                      setErrorMsgs={setErrorMsgs}
+                    />
+                    <SellLotForm
                       ticker={position.ticker}
                       setErrorMsgs={setErrorMsgs}
                     />

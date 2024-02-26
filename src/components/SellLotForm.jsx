@@ -1,7 +1,7 @@
 import styles from "../css/LotForms.module.css";
 import PropTypes from "prop-types";
 
-const NewLotForm = ({ ticker, setErrorMsgs }) => {
+const SellLotForm = ({ ticker, setErrorMsgs }) => {
   const addLotHandler = async (e) => {
     e.preventDefault();
     const quantity = document.getElementById("lotQuantity").value;
@@ -34,18 +34,18 @@ const NewLotForm = ({ ticker, setErrorMsgs }) => {
   };
   return (
     <form className={styles.lotForm}>
-      <input type="number" id="lotQuantity" placeholder="buy quantity" />
-      <input type="number" id="lotPrice" placeholder="buy price" />
+      <input type="number" id="lotQuantity" placeholder="sale quantity" />
+      <input type="number" id="lotPrice" placeholder="sale price" />
       <button type="submit" onClick={addLotHandler}>
-        add lot
+        sell lot
       </button>
     </form>
   );
 };
 
-NewLotForm.propTypes = {
+SellLotForm.propTypes = {
   ticker: PropTypes.string,
   setErrorMsgs: PropTypes.func,
 };
 
-export default NewLotForm;
+export default SellLotForm;
