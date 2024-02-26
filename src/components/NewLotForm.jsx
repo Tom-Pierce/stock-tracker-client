@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 const NewLotForm = ({ ticker, setErrorMsgs }) => {
   const addLotHandler = async (e) => {
     e.preventDefault();
-    const quantity = document.getElementById("lotQuantity").value;
-    const price = document.getElementById("lotPrice").value;
+    const quantity = document.getElementById("newLotQuantity").value;
+    const price = document.getElementById("newLotPrice").value;
     try {
       const res = await fetch(
         `${import.meta.env.VITE_API_URL}/api/portfolio/position/${ticker}/lot`,
@@ -34,8 +34,8 @@ const NewLotForm = ({ ticker, setErrorMsgs }) => {
   };
   return (
     <form className={styles.lotForm}>
-      <input type="number" id="lotQuantity" placeholder="buy quantity" />
-      <input type="number" id="lotPrice" placeholder="buy price" />
+      <input type="number" id="newLotQuantity" placeholder="buy quantity" />
+      <input type="number" id="newLotPrice" placeholder="buy price" />
       <button type="submit" onClick={addLotHandler}>
         add lot
       </button>
