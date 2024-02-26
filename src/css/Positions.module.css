@@ -1,23 +1,32 @@
 .positionsTable {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr) 0.25fr;
+  display: flex;
+  flex-direction: column;
   max-width: min(700px, 90%);
   margin: 1rem;
   border: 1px solid var(--primary);
 }
 
+.row {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr) 0.25fr;
+}
+
 .cell {
   text-align: center;
-  border: 1px solid var(--primary);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.row {
+  border: 1px solid var(--primary);
+
   height: 1.5rem;
   overflow: hidden;
   transition: height 0.3s ease;
 }
 
-.cell.expanded {
+.row.expanded {
   height: 4rem;
 }
 

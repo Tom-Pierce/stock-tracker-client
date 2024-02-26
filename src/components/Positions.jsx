@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { UserContext } from "../App";
 import styles from "../css/Positions.module.css";
-import React from "react";
 import expandMore from "../assets/expandMore.svg";
 import expandLess from "../assets/expandLess.svg";
 
@@ -19,65 +18,44 @@ const Positions = () => {
     <>
       {userPortfolio ? (
         <div className={styles.positionsTable}>
-          <div className={styles.cell}>stock</div>
-          <div className={styles.cell}>current price</div>
-          <div className={styles.cell}>shares</div>
-          <div className={styles.cell}>value</div>
-          <div className={styles.cell}>cost</div>
-          <div className={styles.cell}>profit</div>
-          <div className={styles.cell}></div>
+          <div className={styles.row}>
+            <div className={styles.cell}>stock</div>
+            <div className={styles.cell}>current price</div>
+            <div className={styles.cell}>shares</div>
+            <div className={styles.cell}>value</div>
+            <div className={styles.cell}>cost</div>
+            <div className={styles.cell}>profit</div>
+            <div className={styles.cell}></div>
+          </div>
           {userPortfolio.positions.map((position, index) => {
             return (
-              <React.Fragment key={index}>
-                <div
-                  className={`${styles.cell} ${
-                    expandedRow === index ? styles.expanded : null
-                  }`}
-                >
+              <div
+                key={index}
+                className={`${styles.row} ${
+                  expandedRow === index ? styles.expanded : null
+                }`}
+              >
+                <div className={styles.cell}>
                   <p className={styles.top}>{position.ticker}</p>
                 </div>
-                <div
-                  className={`${styles.cell} ${
-                    expandedRow === index ? styles.expanded : null
-                  }`}
-                >
+                <div className={styles.cell}>
                   <p className={styles.top}>{position.currentPrice}</p>
                 </div>
-                <div
-                  className={`${styles.cell} ${
-                    expandedRow === index ? styles.expanded : null
-                  }`}
-                >
+                <div className={styles.cell}>
                   <p className={styles.top}>{position.quantity}</p>
                 </div>
-                <div
-                  className={`${styles.cell} ${
-                    expandedRow === index ? styles.expanded : null
-                  }`}
-                >
+                <div className={styles.cell}>
                   <p className={styles.top}>{position.value}</p>
                 </div>
-                <div
-                  className={`${styles.cell} ${
-                    expandedRow === index ? styles.expanded : null
-                  }`}
-                >
+                <div className={styles.cell}>
                   <p className={styles.top}>{position.cost}</p>
                 </div>
-                <div
-                  className={`${styles.cell} ${
-                    expandedRow === index ? styles.expanded : null
-                  }`}
-                >
+                <div className={styles.cell}>
                   <p className={styles.top}>
                     {Math.round(((position.value - position.cost) * 100) / 100)}
                   </p>
                 </div>
-                <div
-                  className={`${styles.cell} ${
-                    expandedRow === index ? styles.expanded : null
-                  }`}
-                >
+                <div className={styles.cell}>
                   <button
                     type="button"
                     className={`${styles.menuButton} ${styles.top}`}
@@ -91,7 +69,7 @@ const Positions = () => {
                     />
                   </button>
                 </div>
-              </React.Fragment>
+              </div>
             );
           })}
         </div>
