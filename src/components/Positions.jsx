@@ -33,11 +33,15 @@ const Positions = () => {
             return (
               <div
                 key={index}
-                className={styles.row}
+                className={`${styles.row} ${
+                  expandedRow === index ? styles.expanded : null
+                }`}
                 // inline styling that calculates the space needed so but also is an exact value so that animation can still work
                 style={
                   expandedRow === index
-                    ? { height: 1.5 * (position.lots.length + 2) + 2 + "rem" }
+                    ? {
+                        height: 1.5 * (position.lots.length + 2) + 2 + "rem",
+                      }
                     : null
                 }
               >

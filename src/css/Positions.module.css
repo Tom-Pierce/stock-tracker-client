@@ -26,6 +26,10 @@
   transition: height 0.3s ease;
 }
 
+.row.expanded .cell {
+  border-bottom: 2px solid var(--primary);
+}
+
 .menuButton {
   background-color: var(--background);
 }
