@@ -3,8 +3,7 @@ import { UserContext } from "../App";
 import styles from "../css/Positions.module.css";
 import expandMore from "../assets/expandMore.svg";
 import expandLess from "../assets/expandLess.svg";
-import NewLotForm from "./NewLotForm";
-import SellLotForm from "./SellLotForm";
+import LotsView from "./LotsView";
 
 const Positions = () => {
   const { userPortfolio } = useContext(UserContext);
@@ -34,9 +33,13 @@ const Positions = () => {
             return (
               <div
                 key={index}
-                className={`${styles.row} ${
-                  expandedRow === index ? styles.expanded : null
-                }`}
+                className={styles.row}
+                // inline styling that calculates the space needed so but also is an exact value so that animation can still work
+                style={
+                  expandedRow === index
+                    ? { height: 1.5 * (position.lots.length + 2) + 2 + "rem" }
+                    : null
+                }
               >
                 <div className={styles.cell}>
                   <p className={styles.top}>{position.ticker}</p>
@@ -73,16 +76,7 @@ const Positions = () => {
                   </button>
                 </div>
                 {expandedRow === index ? (
-                  <div className={`${styles.cell} ${styles.formWrapper}`}>
-                    <NewLotForm
-                      ticker={position.ticker}
-                      setErrorMsgs={setErrorMsgs}
-                    />
-                    <SellLotForm
-                      ticker={position.ticker}
-                      setErrorMsgs={setErrorMsgs}
-                    />
-                  </div>
+                  <LotsView position={position} />
                 ) : null}
               </div>
             );

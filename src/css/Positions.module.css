@@ -26,10 +26,6 @@
   transition: height 0.3s ease;
 }
 
-.row.expanded {
-  height: 5rem;
-}
-
 .menuButton {
   background-color: var(--background);
 }
@@ -43,10 +39,6 @@
   align-self: flex-start;
 }
 
-.formWrapper {
-  display: flex;
-  gap: 1rem;
+.lotsView {
   grid-column: 1 / span 7;
-  border-top: 1px solid var(--primary);
-  border-bottom: 1px solid var(--primary);
 }
