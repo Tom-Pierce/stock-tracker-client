@@ -90,7 +90,6 @@ const Positions = () => {
               </div>
             );
           })}
-          {console.log(userPortfolio)}
           <div className={styles.row}>
             <div className={styles.cell}>
               <p>total</p>
