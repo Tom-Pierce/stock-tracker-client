@@ -2,6 +2,7 @@ import styles from "../css/Positions.module.css";
 import PropTypes from "prop-types";
 import formatDollar from "../utils/formatDollar";
 import DeleteLotButton from "./DeleteLotButton";
+import AddSVG from "../assets/add.svg";
 
 const LotsView = ({ position }) => {
   return (
@@ -19,8 +20,12 @@ const LotsView = ({ position }) => {
         <div className={styles.cell}>
           <p className={styles.top}>lot value</p>
         </div>
+        <div className={styles.cell}></div>
+        <div className={styles.cell}></div>
         <div className={styles.cell}>
-          <p className={styles.top}></p>
+          <button>
+            <img src={AddSVG} alt="delete" />
+          </button>
         </div>
       </div>
       {position.lots.map((lot, index) => {
@@ -40,6 +45,9 @@ const LotsView = ({ position }) => {
                 {formatDollar(lot.quantity * position.currentPrice)}
               </p>
             </div>
+            <div className={styles.cell}></div>
+            <div className={styles.cell}></div>
+
             <div className={styles.cell}>
               <DeleteLotButton lotId={lot._id} ticker={position.ticker} />
             </div>
