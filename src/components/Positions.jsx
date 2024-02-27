@@ -5,10 +5,11 @@ import expandMore from "../assets/expandMore.svg";
 import expandLess from "../assets/expandLess.svg";
 import LotsView from "./LotsView";
 import formatDollar from "../utils/formatDollar";
+import Loader from "./Loader";
 
 const Positions = () => {
   const { userPortfolio } = useContext(UserContext);
-  const [expandedRow, setExpandedRow] = useState(1);
+  const [expandedRow, setExpandedRow] = useState(undefined);
 
   const expandRowClickHandler = (e, index) => {
     e.preventDefault();
@@ -89,8 +90,65 @@ const Positions = () => {
               </div>
             );
           })}
+          {console.log(userPortfolio)}
+          <div className={styles.row}>
+            <div className={styles.cell}>
+              <p>total</p>
+            </div>
+            <div className={styles.cell}>
+              <p></p>
+            </div>
+            <div className={styles.cell}>
+              <p></p>
+            </div>
+            <div className={styles.cell}>
+              <p>
+                {formatDollar(
+                  userPortfolio.positions.reduce(
+                    (accumulator, currentPosition) => {
+                      return accumulator + currentPosition.value;
+                    },
+                    0
+                  )
+                )}
+              </p>
+            </div>
+            <div className={styles.cell}>
+              <p>
+                {formatDollar(
+                  userPortfolio.positions.reduce(
+                    (accumulator, currentPosition) => {
+                      return accumulator + currentPosition.cost;
+                    },
+                    0
+                  )
+                )}
+              </p>
+            </div>
+            <div className={styles.cell}>
+              <p>
+                {formatDollar(
+                  userPortfolio.positions.reduce(
+                    (accumulator, currentPosition) => {
+                      return (
+                        accumulator +
+                        Math.round(
+                          ((currentPosition.value - currentPosition.cost) *
+                            100) /
+                            100
+                        )
+                      );
+                    },
+                    0
+                  )
+                )}
+              </p>
+            </div>
+          </div>
         </div>
-      ) : null}
+      ) : (
+        <Loader />
+      )}
     </>
   );
 };
