@@ -4,6 +4,7 @@ import styles from "../css/Positions.module.css";
 import expandMore from "../assets/expandMore.svg";
 import expandLess from "../assets/expandLess.svg";
 import LotsView from "./LotsView";
+import formatDollar from "../utils/formatDollar";
 
 const Positions = () => {
   const { userPortfolio } = useContext(UserContext);
@@ -44,20 +45,24 @@ const Positions = () => {
                   <p className={styles.top}>{position.ticker}</p>
                 </div>
                 <div className={styles.cell}>
-                  <p className={styles.top}>{position.currentPrice}</p>
+                  <p className={styles.top}>
+                    {formatDollar(position.currentPrice)}
+                  </p>
                 </div>
                 <div className={styles.cell}>
                   <p className={styles.top}>{position.quantity}</p>
                 </div>
                 <div className={styles.cell}>
-                  <p className={styles.top}>{position.value}</p>
+                  <p className={styles.top}>{formatDollar(position.value)}</p>
                 </div>
                 <div className={styles.cell}>
-                  <p className={styles.top}>{position.cost}</p>
+                  <p className={styles.top}>{formatDollar(position.cost)}</p>
                 </div>
                 <div className={styles.cell}>
                   <p className={styles.top}>
-                    {Math.round(((position.value - position.cost) * 100) / 100)}
+                    {formatDollar(
+                      Math.round(((position.value - position.cost) * 100) / 100)
+                    )}
                   </p>
                 </div>
                 <div className={styles.cell}>

@@ -1,5 +1,6 @@
 import styles from "../css/Positions.module.css";
 import PropTypes from "prop-types";
+import formatDollar from "../utils/formatDollar";
 
 const LotsView = ({ position }) => {
   return (
@@ -25,14 +26,14 @@ const LotsView = ({ position }) => {
               <p className={styles.top}>{lot.quantity}</p>
             </div>
             <div className={styles.cell}>
-              <p className={styles.top}>{lot.price}</p>
+              <p className={styles.top}>{formatDollar(lot.price)}</p>
             </div>
             <div className={styles.cell}>
-              <p className={styles.top}>{lot.cost}</p>
+              <p className={styles.top}>{formatDollar(lot.cost)}</p>
             </div>
             <div className={styles.cell}>
               <p className={styles.top}>
-                {lot.quantity * position.currentPrice}
+                {formatDollar(lot.quantity * position.currentPrice)}
               </p>
             </div>
           </div>
