@@ -9,6 +9,7 @@ export const UserContext = createContext();
 
 function App() {
   const [userPortfolio, setUserPortfolio] = useState();
+  const [reFetch, setReFetch] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,7 +31,7 @@ function App() {
       }
     };
     fetchData();
-  }, []);
+  }, [reFetch]);
 
   return (
     <>
@@ -38,6 +39,8 @@ function App() {
         value={{
           userPortfolio,
           setUserPortfolio,
+          reFetch,
+          setReFetch,
         }}
       >
         <BrowserRouter>
