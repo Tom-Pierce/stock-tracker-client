@@ -8,7 +8,6 @@ import LotsView from "./LotsView";
 const Positions = () => {
   const { userPortfolio } = useContext(UserContext);
   const [expandedRow, setExpandedRow] = useState(1);
-  const [errorMsgs, setErrorMsgs] = useState([]);
 
   const expandRowClickHandler = (e, index) => {
     e.preventDefault();
@@ -81,11 +80,6 @@ const Positions = () => {
               </div>
             );
           })}
-          {errorMsgs.length > 0
-            ? errorMsgs.map((err, index) => {
-                return <div key={`error-${index}`}>{err}</div>;
-              })
-            : null}
         </div>
       ) : null}
     </>
