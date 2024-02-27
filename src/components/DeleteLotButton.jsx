@@ -29,7 +29,7 @@ const DeleteLotButton = ({ lotId, ticker }) => {
 
   return (
     <button
-      className={styles.deleteZipLinkBtn}
+      className={styles.deleteLotButton}
       onClick={(e) => {
         e.preventDefault();
         deleteHandler(ticker);
