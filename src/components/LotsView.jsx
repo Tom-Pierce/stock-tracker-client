@@ -71,7 +71,7 @@ const LotsView = ({ position, showNewLotForm, setShowNewLotForm }) => {
 
 LotsView.propTypes = {
   position: PropTypes.object,
-  showNewLotForm: PropTypes.number,
+  showNewLotForm: PropTypes.bool,
   setShowNewLotForm: PropTypes.func,
 };
 
