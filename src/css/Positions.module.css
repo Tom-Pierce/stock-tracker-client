@@ -44,9 +44,6 @@
   align-self: flex-start;
 }
 
-.row.expanded .lotsView {
-}
-
 .lotsView {
   grid-column: 1 / span 7;
 }

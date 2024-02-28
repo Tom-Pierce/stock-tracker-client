@@ -25,7 +25,7 @@ const Positions = () => {
         );
       }
     }
-  }, [expandedRow, showNewLotForm]);
+  }, [expandedRow, showNewLotForm, userPortfolio]);
 
   const expandRowClickHandler = (e, index) => {
     e.preventDefault();
