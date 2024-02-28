@@ -2,9 +2,13 @@ import styles from "../css/Positions.module.css";
 import PropTypes from "prop-types";
 import formatDollar from "../utils/formatDollar";
 import DeleteLotButton from "./DeleteLotButton";
-import AddSVG from "../assets/add.svg";
+import { useState } from "react";
+import NewLotButton from "./NewLotButton";
+import NewLotForm from "./NewLotForm";
 
 const LotsView = ({ position }) => {
+  const [showNewLotForm, setShowNewLotForm] = useState(false);
+
   return (
     <div className={styles.lotsView}>
       <div className={styles.row}>
@@ -23,11 +27,21 @@ const LotsView = ({ position }) => {
         <div className={styles.cell}></div>
         <div className={styles.cell}></div>
         <div className={styles.cell}>
-          <button>
-            <img src={AddSVG} alt="delete" />
-          </button>
+          <NewLotButton
+            showNewLotForm={showNewLotForm}
+            setShowNewLotForm={setShowNewLotForm}
+          />
         </div>
       </div>
+      {showNewLotForm ? (
+        <div className={`${styles.row} ${styles.newLotRow}`}>
+          <NewLotForm
+            ticker={position.ticker}
+            setShowNewLotForm={setShowNewLotForm}
+          />
+        </div>
+      ) : null}
+
       {position.lots.map((lot, index) => {
         return (
           <div key={`lot-${index}`} className={styles.row}>

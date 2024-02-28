@@ -41,7 +41,7 @@ const Positions = () => {
                 style={
                   expandedRow === index
                     ? {
-                        height: 1.5 * (position.lots.length + 2) + 2 + "rem",
+                        height: 1.5 * (position.lots.length + 2) + 5 + "rem",
                       }
                     : null
                 }

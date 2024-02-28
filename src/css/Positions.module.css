@@ -15,6 +15,10 @@
   transition: height 0.3s ease;
 }
 
+.newLotRow {
+  height: 3rem;
+}
+
 .cell {
   text-align: center;
   display: flex;
