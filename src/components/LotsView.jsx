@@ -2,13 +2,10 @@ import styles from "../css/Positions.module.css";
 import PropTypes from "prop-types";
 import formatDollar from "../utils/formatDollar";
 import DeleteLotButton from "./DeleteLotButton";
-import { useState } from "react";
 import NewLotButton from "./NewLotButton";
 import NewLotForm from "./NewLotForm";
 
-const LotsView = ({ position }) => {
-  const [showNewLotForm, setShowNewLotForm] = useState(false);
-
+const LotsView = ({ position, showNewLotForm, setShowNewLotForm }) => {
   return (
     <div className={styles.lotsView}>
       <div className={styles.row}>
@@ -74,6 +71,8 @@ const LotsView = ({ position }) => {
 
 LotsView.propTypes = {
   position: PropTypes.object,
+  showNewLotForm: PropTypes.number,
+  setShowNewLotForm: PropTypes.func,
 };
 
 export default LotsView;

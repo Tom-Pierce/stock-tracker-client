@@ -10,13 +10,17 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr) 0.25fr;
   border: 1px solid var(--primary);
-  height: 1.5rem;
   overflow: hidden;
-  transition: height 0.3s ease;
+  height: 1.5rem;
+  transition: height 0.5s ease;
 }
 
 .newLotRow {
   height: 3rem;
+}
+
+.row.expanded .cell {
+  border-bottom: 1px solid var(--primary);
 }
 
 .cell {
@@ -25,10 +29,6 @@
   justify-content: center;
   align-items: center;
   height: 1.5rem;
-}
-
-.row.expanded .cell {
-  border-bottom: 2px solid var(--primary);
 }
 
 .menuButton {
@@ -42,6 +42,9 @@
 .top {
   display: flex;
   align-self: flex-start;
+}
+
+.row.expanded .lotsView {
 }
 
 .lotsView {

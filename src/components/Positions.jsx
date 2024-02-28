@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../App";
 import styles from "../css/Positions.module.css";
 import expandMore from "../assets/expandMore.svg";
@@ -10,6 +10,22 @@ import Loader from "./Loader";
 const Positions = () => {
   const { userPortfolio } = useContext(UserContext);
   const [expandedRow, setExpandedRow] = useState(undefined);
+  const [expandedRowHeight, setExpandedRowHeight] = useState(0);
+  const [showNewLotForm, setShowNewLotForm] = useState(false);
+
+  useEffect(() => {
+    if (userPortfolio && userPortfolio.positions && expandedRow >= 0) {
+      if (showNewLotForm) {
+        setExpandedRowHeight(
+          1.5 * (userPortfolio.positions[expandedRow].lots.length + 2) + 5
+        );
+      } else {
+        setExpandedRowHeight(
+          1.5 * (userPortfolio.positions[expandedRow].lots.length + 2) + 2
+        );
+      }
+    }
+  }, [expandedRow, showNewLotForm]);
 
   const expandRowClickHandler = (e, index) => {
     e.preventDefault();
@@ -35,13 +51,13 @@ const Positions = () => {
               <div
                 key={index}
                 className={`${styles.row} ${
-                  expandedRow === index ? styles.expanded : null
+                  expandedRow === index ? styles.expanded : ""
                 }`}
                 // inline styling that calculates the space needed so but also is an exact value so that animation can still work
                 style={
                   expandedRow === index
                     ? {
-                        height: 1.5 * (position.lots.length + 2) + 5 + "rem",
+                        height: expandedRowHeight + "rem",
                       }
                     : null
                 }
@@ -85,7 +101,11 @@ const Positions = () => {
                   </button>
                 </div>
                 {expandedRow === index ? (
-                  <LotsView position={position} />
+                  <LotsView
+                    position={position}
+                    showNewLotForm={showNewLotForm}
+                    setShowNewLotForm={setShowNewLotForm}
+                  />
                 ) : null}
               </div>
             );
