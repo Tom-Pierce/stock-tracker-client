@@ -22,7 +22,7 @@ const LotsView = ({ position, showNewLotForm, setShowNewLotForm }) => {
           <p className={styles.top}>lot value</p>
         </div>
         <div className={styles.cell}></div>
-        <div className={styles.cell}></div>
+        <div className={styles.cell}>lot profit</div>
         <div className={styles.cell}>
           <NewLotButton
             showNewLotForm={showNewLotForm}
@@ -57,7 +57,9 @@ const LotsView = ({ position, showNewLotForm, setShowNewLotForm }) => {
               </p>
             </div>
             <div className={styles.cell}></div>
-            <div className={styles.cell}></div>
+            <div className={styles.cell}>
+              {formatDollar(lot.quantity * position.currentPrice - lot.cost)}
+            </div>
 
             <div className={styles.cell}>
               <DeleteLotButton lotId={lot._id} ticker={position.ticker} />
