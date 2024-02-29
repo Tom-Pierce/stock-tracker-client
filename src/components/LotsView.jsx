@@ -5,7 +5,12 @@ import DeleteLotButton from "./DeleteLotButton";
 import NewLotButton from "./NewLotButton";
 import NewLotForm from "./NewLotForm";
 
-const LotsView = ({ position, showNewLotForm, setShowNewLotForm }) => {
+const LotsView = ({
+  position,
+  showNewLotForm,
+  setShowNewLotForm,
+  setErrorMsgs,
+}) => {
   return (
     <div className={styles.lotsView}>
       <div className={styles.row}>
@@ -35,6 +40,7 @@ const LotsView = ({ position, showNewLotForm, setShowNewLotForm }) => {
           <NewLotForm
             ticker={position.ticker}
             setShowNewLotForm={setShowNewLotForm}
+            setErrorMsgs={setErrorMsgs}
           />
         </div>
       ) : null}
@@ -75,6 +81,7 @@ LotsView.propTypes = {
   position: PropTypes.object,
   showNewLotForm: PropTypes.bool,
   setShowNewLotForm: PropTypes.func,
+  setErrorMsgs: PropTypes.func,
 };
 
 export default LotsView;

@@ -12,6 +12,7 @@ const Positions = () => {
   const [expandedRow, setExpandedRow] = useState(undefined);
   const [expandedRowHeight, setExpandedRowHeight] = useState(0);
   const [showNewLotForm, setShowNewLotForm] = useState(false);
+  const [errorMsgs, setErrorMsgs] = useState([]);
 
   useEffect(() => {
     if (userPortfolio && userPortfolio.positions && expandedRow >= 0) {
@@ -105,6 +106,7 @@ const Positions = () => {
                     position={position}
                     showNewLotForm={showNewLotForm}
                     setShowNewLotForm={setShowNewLotForm}
+                    setErrorMsgs={setErrorMsgs}
                   />
                 ) : null}
               </div>
@@ -164,6 +166,13 @@ const Positions = () => {
               </p>
             </div>
           </div>
+          {errorMsgs.length === 0 ? null : (
+            <ul className={styles.errorMsgs}>
+              {errorMsgs.map((msg, index) => (
+                <li key={`error-${index}`}>{msg}</li>
+              ))}
+            </ul>
+          )}
         </div>
       ) : (
         <Loader />

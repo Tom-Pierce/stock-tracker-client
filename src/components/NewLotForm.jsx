@@ -3,7 +3,7 @@ import styles from "../css/LotForms.module.css";
 import PropTypes from "prop-types";
 import { UserContext } from "../App";
 
-const NewLotForm = ({ ticker, setErrorMsgs, setShowNewLotForm }) => {
+const NewLotForm = ({ ticker, setShowNewLotForm, setErrorMsgs }) => {
   const { reFetch, setReFetch } = useContext(UserContext);
 
   const addLotHandler = async (e) => {
@@ -24,11 +24,13 @@ const NewLotForm = ({ ticker, setErrorMsgs, setShowNewLotForm }) => {
         }
       );
 
+      const json = await res.json();
+      console.log({ status: res.status });
       if (res.status === 400) {
-        // setErrorMsgs(json);
+        setErrorMsgs(json);
       }
       if (res.status === 201) {
-        // setErrorMsgs([]);
+        setErrorMsgs([]);
         setShowNewLotForm(false);
         setReFetch(!reFetch);
       }
@@ -49,8 +51,8 @@ const NewLotForm = ({ ticker, setErrorMsgs, setShowNewLotForm }) => {
 
 NewLotForm.propTypes = {
   ticker: PropTypes.string,
-  setErrorMsgs: PropTypes.func,
   setShowNewLotForm: PropTypes.func,
+  setErrorMsgs: PropTypes.func,
 };
 
 export default NewLotForm;

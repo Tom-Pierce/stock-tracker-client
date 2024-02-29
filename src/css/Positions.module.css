@@ -47,3 +47,7 @@
 .lotsView {
   grid-column: 1 / span 7;
 }
+
+.errorMsgs {
+  color: red;
+}
