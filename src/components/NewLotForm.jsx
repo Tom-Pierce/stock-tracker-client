@@ -25,7 +25,6 @@ const NewLotForm = ({ ticker, setShowNewLotForm, setErrorMsgs }) => {
       );
 
       const json = await res.json();
-      console.log({ status: res.status });
       if (res.status === 400) {
         setErrorMsgs(json);
       }
