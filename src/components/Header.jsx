@@ -22,7 +22,7 @@ const Header = () => {
       );
 
       if (res.status === 200) {
-        setUserPortfolio(undefined);
+        setUserPortfolio({ loggedIn: false });
       }
 
       <Navigate to="/" replace={true} />;
@@ -35,7 +35,7 @@ const Header = () => {
     <header className={styles.header}>
       <h1 className={styles.title}>StockTracker</h1>
 
-      {userPortfolio ? (
+      {userPortfolio.loggedIn ? (
         <button className={styles.logButton} onClick={logout}>
           log out
         </button>

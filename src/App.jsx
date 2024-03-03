@@ -8,7 +8,7 @@ import { createContext, useEffect, useState } from "react";
 export const UserContext = createContext();
 
 function App() {
-  const [userPortfolio, setUserPortfolio] = useState();
+  const [userPortfolio, setUserPortfolio] = useState({ loggedIn: false });
   const [reFetch, setReFetch] = useState(true);
 
   useEffect(() => {
@@ -27,7 +27,9 @@ function App() {
 
       if (res.status === 200) {
         const userData = await res.json();
-        setUserPortfolio(userData);
+        setUserPortfolio({ ...userData, loggedIn: true });
+      } else {
+        setUserPortfolio({ loggedIn: false });
       }
     };
     fetchData();
