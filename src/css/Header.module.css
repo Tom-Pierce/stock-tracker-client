@@ -7,3 +7,10 @@
   font-size: 2.5rem;
   font-weight: 300;
 }
+
+.logButton {
+  background-color: var(--background);
+  color: var(--text);
+  cursor: pointer;
+  text-decoration: none;
+}
