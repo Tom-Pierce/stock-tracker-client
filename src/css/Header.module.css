@@ -1,6 +1,8 @@
 .header {
   padding: 0.5rem;
   border-bottom: 2px solid var(--primary);
+  display: flex;
+  align-items: center;
 }
 
 .title {
@@ -13,4 +15,6 @@
   color: var(--text);
   cursor: pointer;
   text-decoration: none;
+  margin-left: auto;
+  margin-right: 2rem;
 }
