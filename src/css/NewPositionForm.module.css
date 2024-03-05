@@ -1,0 +1,25 @@
+.positionForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  width: 100%;
+  margin-left: 1rem;
+  gap: 1rem;
+}
+
+.positionForm input {
+  padding: 0.25rem;
+  width: 8rem;
+  background-color: var(--background);
+  color: var(--text);
+  border: 1px solid var(--primary);
+}
+
+.positionForm button {
+  padding: 0.25rem;
+  width: 8rem;
+  background-color: var(--background);
+  color: var(--text);
+  border: 1px solid var(--primary);
+}

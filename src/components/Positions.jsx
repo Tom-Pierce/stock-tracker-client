@@ -5,12 +5,15 @@ import expandMore from "../assets/expandMore.svg";
 import expandLess from "../assets/expandLess.svg";
 import LotsView from "./LotsView";
 import formatDollar from "../utils/formatDollar";
+import NewPositionButton from "./NewPositionButton";
+import NewPositionForm from "../css/NewPositionForm";
 
 const Positions = () => {
   const { userPortfolio } = useContext(UserContext);
   const [expandedRow, setExpandedRow] = useState(undefined);
   const [expandedRowHeight, setExpandedRowHeight] = useState(0);
   const [showNewLotForm, setShowNewLotForm] = useState(false);
+  const [showNewPositionForm, setShowNewPositionForm] = useState(false);
   const [errorMsgs, setErrorMsgs] = useState([]);
 
   useEffect(() => {
@@ -43,8 +46,21 @@ const Positions = () => {
           <div className={styles.cell}>value</div>
           <div className={styles.cell}>cost</div>
           <div className={styles.cell}>profit</div>
-          <div className={styles.cell}></div>
+          <div className={styles.cell}>
+            <NewPositionButton
+              showNewPositionForm={showNewPositionForm}
+              setShowNewPositionForm={setShowNewPositionForm}
+            />
+          </div>
         </div>
+        {showNewPositionForm ? (
+          <div className={`${styles.row} ${styles.newPositionRow}`}>
+            <NewPositionForm
+              setShowNewLotForm={setShowNewLotForm}
+              setErrorMsgs={setErrorMsgs}
+            />
+          </div>
+        ) : null}
         {userPortfolio.positions.map((position, index) => {
           return (
             <div
