@@ -22,6 +22,10 @@ To get started with the StockTracker Client, follow these steps:
 
 5. **Start tracking your positions**: You're all set! Start using StockTracker to track your positions and profit.
 
+## To-Do
+
+Refine the look and feel of the front end
+
 ## Contributing
 
 Contributions are welcome! If you have ideas for new features, improvements, or bug fixes, feel free to open an issue or submit a pull request.
