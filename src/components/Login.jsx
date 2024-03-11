@@ -32,6 +32,33 @@ const Login = () => {
     }
   };
 
+  const demoClickHandler = async (e) => {
+    e.preventDefault();
+    const email = "demo@example.com";
+    const password = "ThisIsADemoAccount123";
+
+    const res = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/auth/local/login`,
+      {
+        method: "post",
+        mode: "cors",
+        body: JSON.stringify({ email, password }),
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    if (res.status === 200)
+      window.location.href = `${window.location.protocol}//${window.location.host}/`;
+
+    if (res.status === 401) {
+      const json = await res.json();
+      setErrorMsg(json.message);
+    }
+  };
+
   return (
     <div className="main">
       <form id="loginForm" className={`box ${styles.authenticationForm}`}>
@@ -49,9 +76,7 @@ const Login = () => {
           className={`${styles.textInput} textInput`}
           placeholder="Password"
         />
-
         {errorMsg ? <p>{errorMsg}</p> : null}
-
         <div>
           <button
             className={`${styles.btn} btn`}
@@ -61,6 +86,14 @@ const Login = () => {
             Login
           </button>
         </div>
+        or
+        <button
+          className={`${styles.btn} btn`}
+          type="submit"
+          onClick={demoClickHandler}
+        >
+          Log in with demo account
+        </button>
       </form>
     </div>
   );
